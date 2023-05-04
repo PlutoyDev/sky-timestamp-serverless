@@ -1,0 +1,7 @@
+name = "sky-timestamp-serverless" # todo
+main = "./src/index.ts"
+compatibility_date = "2022-05-03"
+
+kv_namespaces = [
+  { binding = 'timestamp-bot', id = 'bdae10a2afe34ee586d9a8805588678d'}
+]
