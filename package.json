@@ -3,15 +3,29 @@
 	"version": "0.0.0",
 	"scripts": {
 		"deploy": "wrangler publish src/index.ts",
-		"dev": "wrangler dev src/index.ts --local",
+		"dev": "wrangler dev src/index.ts",
 		"test": "vitest",
-		"start-stackblitz": "WRANGLER_SEND_METRICS=false wrangler dev src/index.ts --local"
+		"start-stackblitz": "WRANGLER_SEND_METRICS=false wrangler dev src/index.ts --local",
+		"ngrok": "ngrok http 8787 --log=stdout",
+		"ncap": "sleep 5s && wrangler kv:key put --binding=TS_BOT BACKEND_URL $(ngrok api endpoints list | jq '.endpoints[0].public_url' -r) --preview",
+		"nc": "concurrently pnpm:ncap pnpm:ngrok"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^3.19.0",
+		"@types/lodash": "^4.14.194",
+		"@types/luxon": "^3.3.0",
+		"concurrently": "^8.0.1",
+		"discord-api-types": "^0.37.41",
 		"prettier": "^2.8.8",
 		"typescript": "^5.0.4",
 		"vitest": "^0.24.5",
 		"wrangler": "^2.19.0"
+	},
+	"dependencies": {
+		"@upstash/qstash": "^0.3.6",
+		"cron-parser": "^4.8.1",
+		"lodash": "^4.17.21",
+		"luxon": "^3.3.0",
+		"tweetnacl": "^1.0.3"
 	}
 }
