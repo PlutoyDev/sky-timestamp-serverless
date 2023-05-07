@@ -3,5 +3,5 @@ main = "./src/index.ts"
 compatibility_date = "2022-05-03"
 
 kv_namespaces = [
-  { binding = 'timestamp-bot', id = 'bdae10a2afe34ee586d9a8805588678d'}
+  { binding = 'TS_BOT', id = 'bdae10a2afe34ee586d9a8805588678d', preview_id = "02e8a32b8a4b48a2ba14fbce10c51b00"}
 ]
